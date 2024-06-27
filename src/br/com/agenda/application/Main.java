@@ -10,11 +10,17 @@ public class Main {
 
         ContactDAO contactDAO = new ContactDAO();
 
+
         Contact contact = new Contact();
         contact.setName("Emanuelle Mota");
         contact.setAge(16);
         contact.setRegisterDate(new Date());
 
         contactDAO.save(contact);
+
+
+        for (Contact c : contactDAO.getContact()) {
+            System.out.println(c.getName());
+        }
     }
 }

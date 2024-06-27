@@ -6,6 +6,9 @@ import br.com.agenda.model.entities.Contact;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactDAO {
 
@@ -46,4 +49,50 @@ public class ContactDAO {
 
     }
 
+    public List<Contact> getContact(){
+        String sql = """
+                        SELECT * FROM contatos
+                    """;
+
+        List<Contact> contactList = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            conn = ConnectionFactory.createConnection();
+
+            preparedStatement = conn.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                Contact contact = new Contact();
+
+                contact.setId(resultSet.getInt("id"));
+                contact.setName(resultSet.getString("nome"));
+                contact.setAge(resultSet.getInt("idade"));
+                contact.setRegisterDate(resultSet.getDate("dataCadastro"));
+
+                contactList.add(contact);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return contactList;
+    }
 }
