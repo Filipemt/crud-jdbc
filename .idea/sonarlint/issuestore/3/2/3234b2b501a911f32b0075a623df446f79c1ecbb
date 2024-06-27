@@ -1,0 +1,9 @@
+
+z
+java:S2589"7Remove this expression which always evaluates to "true"(¡ææú8¿ëòÖ…2J$fe20123b-8e14-4651-a95b-1a8582a4c5ed
+ª
+java:S1488"bImmediately return this expression instead of assigning it to the temporary variable "connection".(ó©õ’üÿÿÿÿ8ºíòÖ…2J$cad0c4e1-a4a7-477d-8715-8c8c40ad2b8f
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‰Ş ğûÿÿÿÿ8ºíòÖ…2J$04bba803-944f-4881-981d-6348af3e0754
+~
+java:S6437"6Revoke and change this password, as it is compromised.(ó©õ’üÿÿÿÿ8»íòÖ…2J$20865d8a-4918-4c56-9b97-b51cbb8e834a
+m	java:S106"+Replace this use of System.out by a logger.(‚À¢8µ¥ôÖ…2J$1b18e499-a2c5-48d6-b110-fb03942cd033

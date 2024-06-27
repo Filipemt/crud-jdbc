@@ -1,0 +1,7 @@
+
+
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(¥Ã½ÿıÿÿÿÿ8ãÆ¯×…2J$523ff63e-e674-4742-812b-983c74d70add
+}
+java:S1118
+":Add a private constructor to hide the implicit public one.(¢¶õ¿8›¥×…2J$6d81c91f-f4cb-44c7-9f33-ae8b7d2f0c39
+m	java:S106"+Replace this use of System.out by a logger.(Ïû8á×…2J$e5ff6ef0-938a-4d90-8775-61f9c11b7c0d
