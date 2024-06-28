@@ -3,10 +3,7 @@ package br.com.agenda.dao;
 import br.com.agenda.factory.ConnectionFactory;
 import br.com.agenda.model.entities.Contact;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +46,44 @@ public class ContactDAO {
 
     }
 
-    public List<Contact> getContact(){
+    public void updateContact(Contact contact) {
+        String sql = """
+                        UPDATE contatos SET nome = ?, idade = ?, dataCadastro = ?
+                        WHERE id = ?
+                    """;
+
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            conn = ConnectionFactory.createConnection();
+
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setString(1, contact.getName());
+            preparedStatement.setInt(2, contact.getAge());
+            preparedStatement.setDate(3, new Date(contact.getRegisterDate().getTime()));
+
+            preparedStatement.setInt(4, contact.getId());
+
+            preparedStatement.execute();
+        }  catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        }
+
+        public List<Contact> getContact(){
         String sql = """
                         SELECT * FROM contatos
                     """;
@@ -95,4 +129,5 @@ public class ContactDAO {
         }
         return contactList;
     }
+
 }
