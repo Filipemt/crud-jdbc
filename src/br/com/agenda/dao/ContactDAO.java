@@ -81,9 +81,9 @@ public class ContactDAO {
                 e.printStackTrace();
             }
         }
-        }
+    }
 
-        public List<Contact> getContact(){
+    public List<Contact> getContact(){
         String sql = """
                         SELECT * FROM contatos
                     """;
@@ -130,4 +130,35 @@ public class ContactDAO {
         return contactList;
     }
 
+    public void deleteContactByID(Contact contact) {
+        String sql = """
+                    DELETE FROM contatos WHERE id = ?
+                    """;
+
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            conn = ConnectionFactory.createConnection();
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setInt(1, contact.getId());
+
+            preparedStatement.execute();
+            System.out.println("Contact deleted!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement  != null) {
+                    preparedStatement.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

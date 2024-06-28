@@ -12,10 +12,10 @@ public class Main {
 
         // Create
         Contact contact = new Contact();
-        contact.setName("Emanuelle Mota");
-        contact.setAge(16);
+        contact.setName("Rafaela Mota");
+        contact.setAge(13);
         contact.setRegisterDate(new Date());
-        // contactDAO.save(contact);
+        contactDAO.save(contact);
 
         // Read
         for (Contact c : contactDAO.getContact()) {
@@ -23,12 +23,18 @@ public class Main {
         }
 
         // Update
-        Contact contact1 =  new Contact();
-        contact1.setName("Filipe Barbosa");
-        contact1.setAge(19);
+        Contact contact1 = new Contact();
+        contact1.setName("Rafaela Barbosa");
+        contact1.setAge(14);
         contact1.setRegisterDate(new Date());
-        contact1.setId(1);
+        contact1.setId(4);
 
         contactDAO.updateContact(contact1);
+
+        // Delete
+        Contact contact2 = new Contact();
+        contact2.setId(4);
+
+        contactDAO.deleteContactByID(contact2);
     }
 }
